@@ -16,11 +16,11 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-display text-4xl text-bone sm:text-5xl">
+      <div className="text-4xl font-extrabold tracking-tight text-brass sm:text-5xl">
         <motion.span>{rounded}</motion.span>
         {suffix}
       </div>
-      <p className="mt-2 font-display text-sm tracking-widest text-bone/60">{label}</p>
+      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.15em] text-bone/60">{label}</p>
     </div>
   )
 }
@@ -35,10 +35,10 @@ export function About() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="mb-3 font-display text-sm uppercase tracking-[0.3em] text-ember-light">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brass">
             {about.eyebrow}
           </p>
-          <h2 className="font-display text-4xl uppercase leading-[0.95] text-bone sm:text-5xl">
+          <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-5xl">
             {about.heading}
           </h2>
           <p className="mt-6 text-base leading-relaxed text-bone/75">
@@ -47,7 +47,7 @@ export function About() {
           <ul className="mt-6 space-y-3">
             {about.points.map((point) => (
               <li key={point} className="flex items-start gap-3 text-sm text-bone/85">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ember" />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brass" />
                 {point}
               </li>
             ))}

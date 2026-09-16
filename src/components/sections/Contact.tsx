@@ -23,11 +23,11 @@ export function Contact() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           <div className="space-y-6">
-            <div className="overflow-hidden rounded-3xl border border-bone/10">
+            <div className="overflow-hidden rounded-3xl border border-bone/10 bg-charcoal-2">
               <iframe
                 title="Gym Bob's of Texas location"
                 src={`https://www.google.com/maps?q=${encodeURIComponent(brand.address)}&output=embed`}
-                className="h-72 w-full"
+                className="h-72 w-full invert-[90%] contrast-[0.9] hue-rotate-180"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -35,34 +35,34 @@ export function Contact() {
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="flex items-start gap-3">
-                <MapPin size={18} className="mt-0.5 shrink-0 text-ember-light" />
+                <MapPin size={18} className="mt-0.5 shrink-0 text-brass" />
                 <p className="text-sm text-bone/80">{brand.address}</p>
               </div>
               <div className="flex items-start gap-3">
-                <Phone size={18} className="mt-0.5 shrink-0 text-ember-light" />
+                <Phone size={18} className="mt-0.5 shrink-0 text-brass" />
                 <p className="text-sm text-bone/80">{brand.phone}</p>
               </div>
               <div className="flex items-start gap-3">
-                <Mail size={18} className="mt-0.5 shrink-0 text-ember-light" />
+                <Mail size={18} className="mt-0.5 shrink-0 text-brass" />
                 <p className="text-sm text-bone/80">{brand.email}</p>
               </div>
               <div className="flex flex-col gap-1 text-sm text-bone/80">
                 {brand.hours.map((h) => (
                   <p key={h.days}>
-                    <span className="font-display tracking-wide text-bone">{h.days}:</span> {h.time}
+                    <span className="font-semibold text-bone">{h.days}:</span> {h.time}
                   </p>
                 ))}
               </div>
             </div>
 
             <div className="flex gap-4">
-              <a href={brand.social.instagram} className="text-bone/60 hover:text-ember-light">
+              <a href={brand.social.instagram} className="text-bone/60 hover:text-brass">
                 <InstagramIcon size={22} />
               </a>
-              <a href={brand.social.facebook} className="text-bone/60 hover:text-ember-light">
+              <a href={brand.social.facebook} className="text-bone/60 hover:text-brass">
                 <FacebookIcon size={22} />
               </a>
-              <a href={brand.social.youtube} className="text-bone/60 hover:text-ember-light">
+              <a href={brand.social.youtube} className="text-bone/60 hover:text-brass">
                 <YoutubeIcon size={22} />
               </a>
             </div>
@@ -71,7 +71,7 @@ export function Contact() {
           <div className="rounded-3xl border border-bone/10 bg-charcoal-2 p-8">
             {sent ? (
               <div className="flex h-full flex-col items-center justify-center text-center">
-                <h3 className="font-display text-2xl uppercase text-bone">Message Sent</h3>
+                <h3 className="text-2xl font-extrabold tracking-tight text-bone">Message Sent</h3>
                 <p className="mt-2 text-sm text-bone/70">
                   Thanks — a member of our team will get back to you shortly.
                 </p>
@@ -79,33 +79,33 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
                     Name
                   </label>
                   <input
                     required
                     type="text"
-                    className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+                    className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
                     Email
                   </label>
                   <input
                     required
                     type="email"
-                    className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+                    className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+                  <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
                     Message
                   </label>
                   <textarea
                     required
                     rows={4}
-                    className="w-full resize-none rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+                    className="w-full resize-none rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
                 <Button type="submit" className="w-full">

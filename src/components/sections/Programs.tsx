@@ -22,16 +22,16 @@ export function Programs() {
             const Icon = icons[program.icon]
             return (
               <Card key={program.id} index={i} className="p-8">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-ember/15 text-ember-light">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brass/15 text-brass">
                   <Icon size={24} />
                 </div>
-                <h3 className="mt-6 font-display text-xl uppercase tracking-wide text-bone">
+                <h3 className="mt-6 text-xl font-extrabold tracking-tight text-bone">
                   {program.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-bone/70">{program.description}</p>
                 <a
                   href="#pricing"
-                  className="mt-5 inline-block font-display tracking-wide text-ember-light hover:text-ember"
+                  className="mt-5 inline-block text-sm font-semibold text-brass hover:text-brass-light"
                 >
                   Learn More &rarr;
                 </a>

@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-bone/10 bg-ink/95 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 text-center lg:flex-row lg:justify-between lg:text-left">
         <div className="flex flex-col items-center gap-3 lg:items-start">
-          <img src="/media/logo.png" alt={brand.name} className="h-16 w-auto" />
+          <img src="/media/logo-transparent.png" alt={brand.name} className="h-14 w-auto" />
           <p className="max-w-xs text-xs text-bone/50">
             {brand.address} &middot; {brand.phone}
           </p>
@@ -16,7 +16,7 @@ export function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="font-display text-sm tracking-wide text-bone/60 hover:text-bone"
+              className="text-xs font-semibold uppercase tracking-[0.12em] text-bone/60 hover:text-bone"
             >
               {link.label}
             </a>

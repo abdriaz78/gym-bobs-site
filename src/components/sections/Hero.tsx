@@ -67,14 +67,14 @@ export function Hero({ onJoinClick }: Props) {
 
       <div ref={contentRef} className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <img
-          src="/media/logo.png"
+          src="/media/logo-transparent.png"
           alt={brand.name}
-          className="mx-auto mb-6 h-24 w-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] sm:h-32 md:h-36"
+          className="mx-auto mb-8 h-20 w-auto drop-shadow-[0_8px_30px_rgba(0,0,0,0.7)] sm:h-28 md:h-32"
         />
-        <h1 className="font-display text-6xl uppercase leading-[0.9] tracking-wide text-bone sm:text-8xl md:text-[9rem]">
+        <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-7xl md:text-8xl">
           {brand.name}
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl font-display text-2xl uppercase tracking-wide text-ember-light sm:text-3xl md:text-4xl">
+        <p className="mx-auto mt-4 max-w-2xl text-xl font-semibold tracking-tight text-brass sm:text-2xl md:text-3xl">
           {brand.tagline}
         </p>
         <p className="mx-auto mt-6 max-w-xl text-base text-bone/80 sm:text-lg">

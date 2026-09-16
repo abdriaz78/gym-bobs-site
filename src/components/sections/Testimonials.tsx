@@ -12,7 +12,7 @@ export function Testimonials() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Card key={t.name} index={i} className="p-8">
-              <div className="flex gap-1 text-ember">
+              <div className="flex gap-1 text-brass">
                 {Array.from({ length: 5 }).map((_, star) => (
                   <Star key={star} size={16} fill="currentColor" />
                 ))}
@@ -26,8 +26,8 @@ export function Testimonials() {
                   className="h-11 w-11 rounded-full object-cover ring-1 ring-bone/15"
                 />
                 <div>
-                  <p className="font-display tracking-wide text-bone">{t.name}</p>
-                  <p className="text-sm text-blue-light">{t.result}</p>
+                  <p className="font-semibold tracking-tight text-bone">{t.name}</p>
+                  <p className="text-sm text-brass">{t.result}</p>
                 </div>
               </div>
             </Card>

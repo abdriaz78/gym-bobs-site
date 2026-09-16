@@ -23,14 +23,14 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3 className="font-display text-2xl uppercase text-bone">Payment</h3>
+      <h3 className="text-2xl font-extrabold tracking-tight text-bone">Payment</h3>
       <p className="mt-1 flex items-center gap-1.5 text-xs text-bone/50">
         <Lock size={12} /> Secured checkout — demo mode, no card is charged
       </p>
 
       <div className="mt-5 space-y-4">
         <div>
-          <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+          <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
             Card Number
           </label>
           <input
@@ -39,12 +39,12 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
             placeholder="4242 4242 4242 4242"
             value={card}
             onChange={(e) => setCard(e.target.value)}
-            className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+            className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
           />
         </div>
         <div className="flex gap-4">
           <div className="flex-1">
-            <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
               Expiry
             </label>
             <input
@@ -52,11 +52,11 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
               placeholder="MM/YY"
               value={expiry}
               onChange={(e) => setExpiry(e.target.value)}
-              className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+              className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
             />
           </div>
           <div className="flex-1">
-            <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
+            <label className="mb-1 block text-xs font-semibold uppercase tracking-[0.12em] text-bone/60">
               CVC
             </label>
             <input
@@ -64,7 +64,7 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
               placeholder="123"
               value={cvc}
               onChange={(e) => setCvc(e.target.value)}
-              className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-ember"
+              className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
             />
           </div>
         </div>

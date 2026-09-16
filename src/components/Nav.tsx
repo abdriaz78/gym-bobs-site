@@ -27,15 +27,15 @@ export function Nav({ onJoinClick }: Props) {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 sm:px-8">
         <a href="#top" className="flex items-center gap-2">
-          <img src="/media/logo.png" alt={brand.name} className="h-14 w-auto sm:h-20" />
+          <img src="/media/logo-transparent.png" alt={brand.name} className="h-12 w-auto sm:h-16" />
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-display text-base tracking-wide text-bone/80 transition-colors hover:text-ember-light"
+              className="text-xs font-semibold uppercase tracking-[0.15em] text-bone/70 transition-colors hover:text-brass"
             >
               {link.label}
             </a>
@@ -70,7 +70,7 @@ export function Nav({ onJoinClick }: Props) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-3 py-3 font-display text-lg tracking-wide text-bone/90 hover:bg-bone/5"
+                  className="rounded-lg px-3 py-3 text-sm font-semibold uppercase tracking-[0.1em] text-bone/90 hover:bg-bone/5"
                 >
                   {link.label}
                 </a>

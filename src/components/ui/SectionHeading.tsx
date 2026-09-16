@@ -16,11 +16,11 @@ export function SectionHeading({ eyebrow, heading, align = 'left' }: Props) {
       className={align === 'center' ? 'text-center' : 'text-left'}
     >
       {eyebrow && (
-        <p className="mb-3 font-display text-sm uppercase tracking-[0.3em] text-ember-light">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brass">
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-4xl uppercase leading-[0.95] text-bone sm:text-5xl md:text-6xl">
+      <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
         {heading}
       </h2>
     </motion.div>

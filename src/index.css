@@ -1,18 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-ink: #060607;
-  --color-charcoal: #0d0d10;
-  --color-charcoal-2: #16161b;
-  --color-maroon: #4a0e14;
-  --color-maroon-light: #6d1620;
-  --color-blue: #1b6ef3;
-  --color-blue-light: #4f9bff;
-  --color-ember: #ff3b1f;
-  --color-ember-light: #ff6a45;
-  --color-bone: #f5f1e8;
+  --color-ink: #0a0908;
+  --color-charcoal: #131110;
+  --color-charcoal-2: #1c1917;
+  --color-maroon: #3a0f16;
+  --color-maroon-light: #6e2430;
+  --color-brass: #c9a227;
+  --color-brass-light: #e6c667;
+  --color-bone: #f3ecdf;
 
-  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -42,8 +40,8 @@
     margin: 0;
     background-color: var(--color-ink);
     background-image:
-      radial-gradient(60rem 40rem at 15% 0%, rgba(74, 14, 20, 0.35), transparent 60%),
-      radial-gradient(50rem 35rem at 100% 20%, rgba(27, 110, 243, 0.08), transparent 55%);
+      radial-gradient(55rem 38rem at 12% -5%, rgba(58, 15, 22, 0.55), transparent 60%),
+      radial-gradient(46rem 32rem at 100% 15%, rgba(201, 162, 39, 0.07), transparent 55%);
     background-attachment: fixed;
     color: var(--color-bone);
     font-family: var(--font-sans);
@@ -71,12 +69,13 @@
     font-family: var(--font-display);
   }
 
-  .text-stroke {
-    -webkit-text-stroke: 1px rgba(245, 241, 232, 0.4);
+  .bg-grain {
+    background-image: radial-gradient(rgba(243, 236, 223, 0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
   }
 
-  .bg-grain {
-    background-image: radial-gradient(rgba(245, 241, 232, 0.05) 1px, transparent 1px);
-    background-size: 3px 3px;
+  .img-blend {
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%);
   }
 }

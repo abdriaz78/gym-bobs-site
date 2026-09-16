@@ -17,7 +17,7 @@ export function FAQ() {
               className="overflow-hidden rounded-2xl border border-bone/10 bg-charcoal-2"
             >
               <Accordion.Header>
-                <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-5 text-left font-display text-lg tracking-wide text-bone">
+                <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-5 text-left text-base font-semibold tracking-tight text-bone">
                   {faq.question}
                   <ChevronDown
                     size={20}

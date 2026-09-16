@@ -104,7 +104,7 @@ export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
                     s === step ||
                     (['plan', 'info', 'payment', 'confirm'] as Step[]).indexOf(s) <
                       (['plan', 'info', 'payment', 'confirm'] as Step[]).indexOf(step)
-                      ? 'bg-ember'
+                      ? 'bg-brass'
                       : 'bg-bone/15'
                   }`}
                 />

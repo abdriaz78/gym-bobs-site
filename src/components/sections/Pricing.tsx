@@ -24,25 +24,25 @@ export function Pricing({ onSelectPlan }: Props) {
               key={tier.id}
               index={i}
               className={`relative flex flex-col p-8 ${
-                tier.featured ? 'border-ember/60 ring-1 ring-ember/40' : ''
+                tier.featured ? 'border-brass/60 ring-1 ring-brass/40' : ''
               }`}
             >
               {tier.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ember px-4 py-1 font-display text-sm tracking-wide text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brass px-4 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-ink">
                   Most Popular
                 </span>
               )}
-              <h3 className="font-display text-xl uppercase tracking-wide text-bone">{tier.name}</h3>
+              <h3 className="text-xl font-extrabold tracking-tight text-bone">{tier.name}</h3>
               <p className="mt-2 text-sm text-bone/60">{tier.description}</p>
               <div className="mt-6 flex items-baseline gap-1">
-                <span className="font-display text-4xl text-bone">${tier.price}</span>
+                <span className="text-4xl font-extrabold tracking-tight text-bone">${tier.price}</span>
                 <span className="text-sm text-bone/50">/{tier.billing}</span>
               </div>
 
               <ul className="mt-6 flex-1 space-y-3">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm text-bone/75">
-                    <Check size={16} className="mt-0.5 shrink-0 text-blue-light" />
+                    <Check size={16} className="mt-0.5 shrink-0 text-brass" />
                     {feature}
                   </li>
                 ))}

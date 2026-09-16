@@ -5,13 +5,6 @@ import { SectionHeading } from '../ui/SectionHeading'
 export function Trainers() {
   return (
     <section id="trainers" className="relative overflow-hidden bg-ink/95 py-24 sm:py-32">
-      <img
-        src="/media/mascot-brown.png"
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute -right-24 -top-16 w-72 rotate-6 opacity-10 sm:w-96"
-      />
-
       <div className="relative mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Meet The Coaches" heading="The Team Behind Your Results" />
 
@@ -27,8 +20,8 @@ export function Trainers() {
                 />
               </div>
               <div className="p-6 text-center">
-                <h3 className="font-display text-xl tracking-wide text-bone">{trainer.name}</h3>
-                <p className="mt-1 font-display text-sm tracking-widest text-ember-light">
+                <h3 className="text-xl font-extrabold tracking-tight text-bone">{trainer.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-brass">
                   {trainer.specialty}
                 </p>
                 <p className="mt-3 text-sm text-bone/65">{trainer.bio}</p>

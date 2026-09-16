@@ -12,13 +12,13 @@ type Props = {
 export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, onNext }: Props) {
   return (
     <div>
-      <h3 className="font-display text-2xl uppercase text-bone">Choose Your Plan</h3>
+      <h3 className="text-2xl font-extrabold tracking-tight text-bone">Choose Your Plan</h3>
 
-      <div className="mt-4 inline-flex rounded-full border border-bone/15 bg-ink p-1 font-display text-sm tracking-wide">
+      <div className="mt-4 inline-flex rounded-full border border-bone/15 bg-ink p-1 text-sm font-semibold">
         <button
           onClick={() => onBillingChange('monthly')}
           className={`rounded-full px-4 py-2 transition-colors ${
-            billingCycle === 'monthly' ? 'bg-ember text-white' : 'text-bone/60'
+            billingCycle === 'monthly' ? 'bg-brass text-ink' : 'text-bone/60'
           }`}
         >
           Monthly
@@ -26,7 +26,7 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
         <button
           onClick={() => onBillingChange('annual')}
           className={`rounded-full px-4 py-2 transition-colors ${
-            billingCycle === 'annual' ? 'bg-ember text-white' : 'text-bone/60'
+            billingCycle === 'annual' ? 'bg-brass text-ink' : 'text-bone/60'
           }`}
         >
           Annual (save 15%)
@@ -44,17 +44,17 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
               onClick={() => onSelect(tier.id)}
               className={`flex w-full items-center justify-between rounded-xl border px-5 py-4 text-left transition-colors ${
                 isSelected
-                  ? 'border-ember bg-ember/10'
+                  ? 'border-brass bg-brass/10'
                   : 'border-bone/15 bg-charcoal-2 hover:border-bone/30'
               }`}
             >
               <div>
-                <p className="font-display tracking-wide text-bone">{tier.name}</p>
+                <p className="font-semibold tracking-tight text-bone">{tier.name}</p>
                 <p className="text-xs text-bone/60">{tier.description}</p>
               </div>
-              <p className="font-display text-lg text-bone">
+              <p className="font-extrabold tracking-tight text-bone">
                 ${price}
-                <span className="text-xs text-bone/50">
+                <span className="text-xs font-normal text-bone/50">
                   /{billingCycle === 'annual' ? 'yr' : 'mo'}
                 </span>
               </p>
