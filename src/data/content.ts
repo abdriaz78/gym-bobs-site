@@ -55,6 +55,7 @@ export type Program = {
   title: string
   description: string
   icon: 'dumbbell' | 'user' | 'laptop' | 'video' | 'leaf'
+  image: string
 }
 
 export const programs: Program[] = [
@@ -64,30 +65,35 @@ export const programs: Program[] = [
     description:
       'Full access to every Gym Bob’s floor — free weights, machines, turf, and recovery bay.',
     icon: 'dumbbell',
+    image: '/media/programs/membership.jpg',
   },
   {
     id: 'personal-training',
     title: 'Personal Training',
     description: '1-on-1 coaching built around your goals, schedule, and starting point.',
     icon: 'user',
+    image: '/media/programs/personal-training.jpg',
   },
   {
     id: 'online-coaching',
     title: 'Online Coaching',
     description: 'Custom programming, weekly check-ins, and form review from anywhere.',
     icon: 'laptop',
+    image: '/media/programs/online-coaching.jpg',
   },
   {
     id: 'virtual-classes',
     title: 'Virtual Group Classes',
     description: 'Live-streamed strength, conditioning, and mobility classes daily.',
     icon: 'video',
+    image: '/media/programs/virtual-classes.jpg',
   },
   {
     id: 'nutrition',
     title: 'Nutrition Coaching',
     description: 'Macro coaching and habit-based nutrition plans that fit real life.',
     icon: 'leaf',
+    image: '/media/programs/nutrition.jpg',
   },
 ]
 

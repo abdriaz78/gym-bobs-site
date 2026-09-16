@@ -19,7 +19,7 @@ export function MascotBreak({ src, eyebrow, caption }: Props) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative h-[46vh] w-full overflow-hidden bg-ink sm:h-[56vh] md:h-[62vh]"
+      className="relative h-[65vh] w-full overflow-hidden bg-ink sm:h-[80vh] md:h-[92vh]"
     >
       <video
         className="h-full w-full object-cover"

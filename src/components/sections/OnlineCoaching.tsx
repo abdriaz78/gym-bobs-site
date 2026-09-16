@@ -11,9 +11,9 @@ export function OnlineCoaching() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto max-w-3xl px-6 text-center"
       >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brass">
+        <span className="mb-4 inline-block rounded-full border border-brass/40 bg-brass/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.2em] text-brass">
           {onlineCoaching.eyebrow}
-        </p>
+        </span>
         <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-5xl">
           {onlineCoaching.heading}
         </h2>

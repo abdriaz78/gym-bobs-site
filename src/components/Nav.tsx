@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { brand, navLinks } from '../data/content'
+import { navLinks } from '../data/content'
 import { Button } from './ui/Button'
 
 type Props = {
@@ -26,8 +26,8 @@ export function Nav({ onJoinClick }: Props) {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 sm:px-8">
-        <a href="#top" className="flex items-center gap-2">
-          <img src="/media/logo-transparent.png" alt={brand.name} className="h-12 w-auto sm:h-16" />
+        <a href="#top" className="text-lg font-extrabold tracking-tight text-bone">
+          Gym Bob's
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex">

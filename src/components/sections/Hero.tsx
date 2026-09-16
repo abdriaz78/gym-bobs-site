@@ -74,6 +74,9 @@ export function Hero({ onJoinClick }: Props) {
         <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-7xl md:text-8xl">
           {brand.name}
         </h1>
+        <span className="mt-4 inline-block rounded-full border border-brass/40 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-brass">
+          Est. 1996
+        </span>
         <p className="mx-auto mt-4 max-w-2xl text-xl font-semibold tracking-tight text-brass sm:text-2xl md:text-3xl">
           {brand.tagline}
         </p>

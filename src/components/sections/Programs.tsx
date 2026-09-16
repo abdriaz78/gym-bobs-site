@@ -21,20 +21,31 @@ export function Programs() {
           {programs.map((program, i) => {
             const Icon = icons[program.icon]
             return (
-              <Card key={program.id} index={i} className="p-8">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brass/15 text-brass">
-                  <Icon size={24} />
+              <Card key={program.id} index={i} className="overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={program.image}
+                    alt={program.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-ink/0" />
+                  <div className="absolute bottom-3 left-3 flex h-11 w-11 items-center justify-center rounded-xl bg-ink/70 text-brass backdrop-blur-sm">
+                    <Icon size={22} />
+                  </div>
                 </div>
-                <h3 className="mt-6 text-xl font-extrabold tracking-tight text-bone">
-                  {program.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-bone/70">{program.description}</p>
-                <a
-                  href="#pricing"
-                  className="mt-5 inline-block text-sm font-semibold text-brass hover:text-brass-light"
-                >
-                  Learn More &rarr;
-                </a>
+                <div className="p-6">
+                  <h3 className="text-xl font-extrabold tracking-tight text-bone">
+                    {program.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-bone/70">{program.description}</p>
+                  <a
+                    href="#pricing"
+                    className="mt-5 inline-block text-sm font-semibold text-brass hover:text-brass-light"
+                  >
+                    Learn More &rarr;
+                  </a>
+                </div>
               </Card>
             )
           })}

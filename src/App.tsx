@@ -34,7 +34,7 @@ function App() {
       <MascotBreak
         src="/media/mascot-brown.mp4"
         eyebrow="Every Rep Counts"
-        caption="This is the standard our coaches train to."
+        caption="No shortcuts. No excuses. Just you, getting stronger."
       />
       <Programs />
       <OnlineCoaching />
