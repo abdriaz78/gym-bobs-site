@@ -41,7 +41,7 @@ export function About() {
           <h2 className="font-display text-4xl uppercase leading-[0.95] text-bone sm:text-5xl">
             {about.heading}
           </h2>
-          <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-bone/75">
+          <p className="mt-6 text-base leading-relaxed text-bone/75">
             {about.body}
           </p>
           <ul className="mt-6 space-y-3">

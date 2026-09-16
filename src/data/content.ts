@@ -42,11 +42,7 @@ export const stats = [
 export const about = {
   eyebrow: 'Why Gym Bob’s',
   heading: 'Built By Texans, For Anyone Chasing A Stronger Life',
-  body: `Gym Bob's started in a single Austin warehouse with a squat rack and a
-  promise: no fluff, just results. Today we run a hybrid model that meets you
-  wherever you train — walk into one of our floors for hands-on coaching, or
-  log in from anywhere in the world for the same programming, accountability,
-  and intensity. Whichever way you show up, the standard doesn't change.`,
+  body: "Gym Bob's started in a single Austin warehouse with a squat rack and a promise: no fluff, just results. Today we run a hybrid model that meets you wherever you train — walk into one of our floors for hands-on coaching, or log in from anywhere in the world for the same programming, accountability, and intensity. Whichever way you show up, the standard doesn't change.",
   points: [
     'In-person + online hybrid membership, one account',
     'Certified strength & conditioning coaches on every floor',

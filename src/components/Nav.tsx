@@ -25,9 +25,9 @@ export function Nav({ onJoinClick }: Props) {
         scrolled ? 'bg-ink/90 backdrop-blur-md border-b border-bone/10' : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 sm:px-8">
         <a href="#top" className="flex items-center gap-2">
-          <img src="/media/logo.png" alt={brand.name} className="h-10 w-auto sm:h-12" />
+          <img src="/media/logo.png" alt={brand.name} className="h-14 w-auto sm:h-20" />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">

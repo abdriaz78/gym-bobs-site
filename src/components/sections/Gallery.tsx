@@ -1,12 +1,18 @@
 import { Card } from '../ui/Card'
 import { SectionHeading } from '../ui/SectionHeading'
 
+// Real Gym Bob's footage plus curated open-source gym photos (Unsplash,
+// free-to-use license) so the gallery doesn't just repeat imagery already
+// used in the Hero/Trainers/Online Coaching sections above.
 const items = [
   { type: 'video', src: '/media/gym-clip-1.mp4', span: 'sm:col-span-2 sm:row-span-2' },
-  { type: 'image', src: '/media/mascot-blue.png', span: '' },
-  { type: 'video', src: '/media/gym-clip-2.mp4', span: '' },
-  { type: 'image', src: '/media/mascot-brown.png', span: 'sm:col-span-2' },
-  { type: 'video', src: '/media/hero-video.mp4', span: '' },
+  { type: 'image', src: '/media/gallery/deadlift-closeup.jpg', span: '' },
+  { type: 'image', src: '/media/gallery/dumbbell-rack.jpg', span: '' },
+  { type: 'video', src: '/media/gym-clip-2.mp4', span: 'sm:col-span-2' },
+  { type: 'image', src: '/media/gallery/dark-gym-floor.jpg', span: '' },
+  { type: 'image', src: '/media/gallery/spotter-bench.jpg', span: 'sm:col-span-2' },
+  { type: 'image', src: '/media/gallery/loading-plates.jpg', span: '' },
+  { type: 'image', src: '/media/gallery/back-extension.jpg', span: '' },
 ] as const
 
 export function Gallery() {
