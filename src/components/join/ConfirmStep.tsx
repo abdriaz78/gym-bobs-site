@@ -16,7 +16,7 @@ export function ConfirmStep({ confirmationId, planName, onClose }: Props) {
         You're signed up for the <span className="font-bold text-bone">{planName}</span> plan.
         A confirmation email is on its way.
       </p>
-      <p className="mt-4 text-xs uppercase tracking-widest text-bone/40">
+      <p className="mt-4 font-display text-sm tracking-widest text-bone/40">
         Confirmation #{confirmationId}
       </p>
       <Button className="mt-8 w-full" onClick={onClose}>

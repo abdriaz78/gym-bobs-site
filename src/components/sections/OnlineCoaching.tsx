@@ -3,7 +3,7 @@ import { onlineCoaching } from '../../data/content'
 
 export function OnlineCoaching() {
   return (
-    <section id="online-coaching" className="bg-charcoal py-24 sm:py-32">
+    <section id="online-coaching" className="bg-charcoal/95 py-24 sm:py-32">
       <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.92, rotate: -1 }}
@@ -44,7 +44,7 @@ export function OnlineCoaching() {
                   {i + 1}
                 </span>
                 <div>
-                  <p className="font-bold uppercase tracking-wide text-bone">{step.title}</p>
+                  <p className="font-display tracking-wide text-bone">{step.title}</p>
                   <p className="text-sm text-bone/65">{step.description}</p>
                 </div>
               </li>

@@ -14,7 +14,7 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
     <div>
       <h3 className="font-display text-2xl uppercase text-bone">Choose Your Plan</h3>
 
-      <div className="mt-4 inline-flex rounded-full border border-bone/15 bg-ink p-1 text-xs font-bold uppercase">
+      <div className="mt-4 inline-flex rounded-full border border-bone/15 bg-ink p-1 font-display text-sm tracking-wide">
         <button
           onClick={() => onBillingChange('monthly')}
           className={`rounded-full px-4 py-2 transition-colors ${
@@ -49,7 +49,7 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
               }`}
             >
               <div>
-                <p className="font-bold uppercase tracking-wide text-bone">{tier.name}</p>
+                <p className="font-display tracking-wide text-bone">{tier.name}</p>
                 <p className="text-xs text-bone/60">{tier.description}</p>
               </div>
               <p className="font-display text-lg text-bone">

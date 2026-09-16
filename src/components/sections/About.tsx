@@ -20,14 +20,14 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
         <motion.span>{rounded}</motion.span>
         {suffix}
       </div>
-      <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-bone/60">{label}</p>
+      <p className="mt-2 font-display text-sm tracking-widest text-bone/60">{label}</p>
     </div>
   )
 }
 
 export function About() {
   return (
-    <section id="about" className="relative bg-charcoal py-24 sm:py-32">
+    <section id="about" className="relative bg-charcoal/95 py-24 sm:py-32">
       <div className="mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-2 lg:items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

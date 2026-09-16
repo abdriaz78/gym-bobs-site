@@ -2,7 +2,7 @@ import { brand, navLinks } from '../data/content'
 
 export function Footer() {
   return (
-    <footer className="border-t border-bone/10 bg-ink py-12">
+    <footer className="border-t border-bone/10 bg-ink/95 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 text-center lg:flex-row lg:justify-between lg:text-left">
         <div className="flex flex-col items-center gap-3 lg:items-start">
           <img src="/media/logo.png" alt={brand.name} className="h-16 w-auto" />
@@ -16,7 +16,7 @@ export function Footer() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-semibold uppercase tracking-wide text-bone/60 hover:text-bone"
+              className="font-display text-sm tracking-wide text-bone/60 hover:text-bone"
             >
               {link.label}
             </a>

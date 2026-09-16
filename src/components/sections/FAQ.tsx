@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function FAQ() {
   return (
-    <section id="faq" className="bg-ink py-24 sm:py-32">
+    <section id="faq" className="bg-ink/95 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6">
         <SectionHeading align="center" eyebrow="FAQ" heading="Common Questions" />
 
@@ -17,7 +17,7 @@ export function FAQ() {
               className="overflow-hidden rounded-2xl border border-bone/10 bg-charcoal-2"
             >
               <Accordion.Header>
-                <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-5 text-left font-bold text-bone">
+                <Accordion.Trigger className="group flex w-full items-center justify-between px-6 py-5 text-left font-display text-lg tracking-wide text-bone">
                   {faq.question}
                   <ChevronDown
                     size={20}

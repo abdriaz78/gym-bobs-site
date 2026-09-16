@@ -35,7 +35,7 @@ export function Nav({ onJoinClick }: Props) {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold uppercase tracking-wide text-bone/80 transition-colors hover:text-ember-light"
+              className="font-display text-base tracking-wide text-bone/80 transition-colors hover:text-ember-light"
             >
               {link.label}
             </a>
@@ -70,7 +70,7 @@ export function Nav({ onJoinClick }: Props) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-semibold uppercase tracking-wide text-bone/90 hover:bg-bone/5"
+                  className="rounded-lg px-3 py-3 font-display text-lg tracking-wide text-bone/90 hover:bg-bone/5"
                 >
                   {link.label}
                 </a>

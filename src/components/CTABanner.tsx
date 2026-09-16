@@ -41,9 +41,9 @@ export function CTABanner({ onClaim }: Props) {
           className="fixed inset-x-0 bottom-0 z-40 border-t border-ember/40 bg-ink/95 backdrop-blur-md"
         >
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
-            <p className="text-sm font-semibold text-bone">
-              <span className="text-ember-light">Free Trial Class</span> — first session on us, no
-              commitment.
+            <p className="text-sm text-bone">
+              <span className="font-display tracking-wide text-ember-light">Free Trial Class</span>{' '}
+              — first session on us, no commitment.
             </p>
             <div className="flex items-center gap-3">
               <Button

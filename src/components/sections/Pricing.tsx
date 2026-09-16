@@ -10,7 +10,7 @@ type Props = {
 
 export function Pricing({ onSelectPlan }: Props) {
   return (
-    <section id="pricing" className="bg-ink py-24 sm:py-32">
+    <section id="pricing" className="bg-ink/95 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading align="center" eyebrow="Membership Plans" heading="Find Your Plan" />
         <p className="mx-auto mt-4 max-w-xl text-center text-sm text-bone/60">
@@ -28,7 +28,7 @@ export function Pricing({ onSelectPlan }: Props) {
               }`}
             >
               {tier.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ember px-4 py-1 text-xs font-bold uppercase tracking-wide text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-ember px-4 py-1 font-display text-sm tracking-wide text-white">
                   Most Popular
                 </span>
               )}

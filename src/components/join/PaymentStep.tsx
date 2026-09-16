@@ -30,7 +30,7 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
 
       <div className="mt-5 space-y-4">
         <div>
-          <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+          <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
             Card Number
           </label>
           <input
@@ -44,7 +44,7 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
         </div>
         <div className="flex gap-4">
           <div className="flex-1">
-            <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+            <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
               Expiry
             </label>
             <input
@@ -56,7 +56,7 @@ export function PaymentStep({ onBack, onSubmit, submitting }: Props) {
             />
           </div>
           <div className="flex-1">
-            <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+            <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
               CVC
             </label>
             <input

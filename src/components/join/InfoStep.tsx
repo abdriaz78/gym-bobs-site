@@ -26,7 +26,7 @@ export function InfoStep({ info, onChange, onBack, onNext }: Props) {
 
       <div className="mt-5 space-y-4">
         <div>
-          <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+          <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
             Full Name
           </label>
           <input
@@ -38,7 +38,7 @@ export function InfoStep({ info, onChange, onBack, onNext }: Props) {
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+          <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
             Email
           </label>
           <input
@@ -50,7 +50,7 @@ export function InfoStep({ info, onChange, onBack, onNext }: Props) {
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+          <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
             Phone
           </label>
           <input

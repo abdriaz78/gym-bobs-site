@@ -5,7 +5,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function Testimonials() {
   return (
-    <section id="results" className="bg-charcoal py-24 sm:py-32">
+    <section id="results" className="bg-charcoal/95 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Transformations" heading="Real Members, Real Results" />
 
@@ -18,9 +18,17 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="mt-5 text-base leading-relaxed text-bone/85">&ldquo;{t.quote}&rdquo;</p>
-              <div className="mt-6 border-t border-bone/10 pt-4">
-                <p className="font-bold uppercase tracking-wide text-bone">{t.name}</p>
-                <p className="text-sm text-blue-light">{t.result}</p>
+              <div className="mt-6 flex items-center gap-3 border-t border-bone/10 pt-4">
+                <img
+                  src={t.photo}
+                  alt={t.name}
+                  loading="lazy"
+                  className="h-11 w-11 rounded-full object-cover ring-1 ring-bone/15"
+                />
+                <div>
+                  <p className="font-display tracking-wide text-bone">{t.name}</p>
+                  <p className="text-sm text-blue-light">{t.result}</p>
+                </div>
               </div>
             </Card>
           ))}

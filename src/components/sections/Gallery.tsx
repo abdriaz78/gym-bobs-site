@@ -17,7 +17,7 @@ const items = [
 
 export function Gallery() {
   return (
-    <section id="gallery" className="bg-charcoal py-24 sm:py-32">
+    <section id="gallery" className="bg-charcoal/95 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Gallery" heading="Inside Gym Bob's" />
 

@@ -17,7 +17,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-charcoal py-24 sm:py-32">
+    <section id="contact" className="bg-charcoal/95 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Visit Us" heading="Find Gym Bob's" />
 
@@ -49,7 +49,7 @@ export function Contact() {
               <div className="flex flex-col gap-1 text-sm text-bone/80">
                 {brand.hours.map((h) => (
                   <p key={h.days}>
-                    <span className="font-bold text-bone">{h.days}:</span> {h.time}
+                    <span className="font-display tracking-wide text-bone">{h.days}:</span> {h.time}
                   </p>
                 ))}
               </div>
@@ -79,7 +79,7 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
                     Name
                   </label>
                   <input
@@ -89,7 +89,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
                     Email
                   </label>
                   <input
@@ -99,7 +99,7 @@ export function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-bone/60">
+                  <label className="mb-1 block font-display text-sm tracking-wide text-bone/60">
                     Message
                   </label>
                   <textarea

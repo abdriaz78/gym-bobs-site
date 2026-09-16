@@ -13,7 +13,7 @@ const icons: Record<Program['icon'], LucideIcon> = {
 
 export function Programs() {
   return (
-    <section id="programs" className="bg-ink py-24 sm:py-32">
+    <section id="programs" className="bg-ink/95 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Programs & Services" heading="Every Way To Train, One Membership" />
 
@@ -31,7 +31,7 @@ export function Programs() {
                 <p className="mt-3 text-sm leading-relaxed text-bone/70">{program.description}</p>
                 <a
                   href="#pricing"
-                  className="mt-5 inline-block text-sm font-bold uppercase tracking-wide text-ember-light hover:text-ember"
+                  className="mt-5 inline-block font-display tracking-wide text-ember-light hover:text-ember"
                 >
                   Learn More &rarr;
                 </a>

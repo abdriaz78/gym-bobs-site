@@ -109,6 +109,7 @@ export type Trainer = {
   name: string
   specialty: string
   bio: string
+  photo: string
 }
 
 export const trainers: Trainer[] = [
@@ -116,29 +117,35 @@ export const trainers: Trainer[] = [
     name: 'Marcus Reyes',
     specialty: 'Strength & Powerlifting',
     bio: '10 years coaching competitive lifters and first-timers alike.',
+    photo: '/media/trainers/marcus-reyes.jpg',
   },
   {
     name: 'Dana Whitfield',
     specialty: 'Online Coaching Lead',
     bio: 'Runs our remote programming team; certified in nutrition coaching.',
+    photo: '/media/trainers/dana-whitfield.jpg',
   },
   {
     name: 'Ty Okafor',
     specialty: 'Conditioning & Athletics',
     bio: 'Former college athlete specializing in speed and conditioning work.',
+    photo: '/media/trainers/ty-okafor.jpg',
   },
   {
     name: 'Priya Nair',
     specialty: 'Mobility & Recovery',
     bio: 'Blends physical-therapy background with strength coaching.',
+    photo: '/media/trainers/priya-nair.jpg',
   },
 ]
-// TODO: replace with real trainer photos in public/media/trainers/
+// Trainer photos are curated open-source (Unsplash, free-to-use) stand-ins —
+// swap in real staff photos in public/media/trainers/ whenever ready.
 
 export type Testimonial = {
   name: string
   result: string
   quote: string
+  photo: string
 }
 
 export const testimonials: Testimonial[] = [
@@ -147,19 +154,23 @@ export const testimonials: Testimonial[] = [
     result: 'Lost 42 lbs in 7 months',
     quote:
       'The online coaching kept me accountable even when I was traveling for work every other week.',
+    photo: '/media/testimonials/chris-m.jpg',
   },
   {
     name: 'Alyssa T.',
     result: 'Added 80 lbs to her deadlift',
     quote: 'Coming from a gym with zero coaching, having someone actually check my form changed everything.',
+    photo: '/media/testimonials/alyssa-t.jpg',
   },
   {
     name: 'James O.',
     result: 'First powerlifting meet at 38',
     quote: 'Never thought I’d compete. Marcus had a plan for that from week one.',
+    photo: '/media/testimonials/james-o.jpg',
   },
 ]
-// TODO: swap in real before/after photos in public/media/transformations/
+// Member photos are curated open-source (Unsplash, free-to-use) stand-ins —
+// swap in real member photos in public/media/testimonials/ whenever ready.
 
 export type PricingTier = {
   id: string
