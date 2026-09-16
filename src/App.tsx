@@ -13,6 +13,7 @@ import { Pricing } from './components/sections/Pricing'
 import { Programs } from './components/sections/Programs'
 import { Testimonials } from './components/sections/Testimonials'
 import { Trainers } from './components/sections/Trainers'
+import { MascotBreak } from './components/MascotBreak'
 import { pricingTiers } from './data/content'
 
 function App() {
@@ -30,8 +31,18 @@ function App() {
       <Nav onJoinClick={() => openJoin()} />
       <Hero onJoinClick={() => openJoin()} />
       <About />
+      <MascotBreak
+        src="/media/mascot-brown.mp4"
+        eyebrow="Every Rep Counts"
+        caption="This is the standard our coaches train to."
+      />
       <Programs />
       <OnlineCoaching />
+      <MascotBreak
+        src="/media/mascot-blue.mp4"
+        eyebrow="No Excuses"
+        caption="Coached from anywhere. Held accountable everywhere."
+      />
       <Trainers />
       <Testimonials />
       <Pricing onSelectPlan={(id) => openJoin(id)} />

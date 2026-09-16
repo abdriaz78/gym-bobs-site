@@ -12,7 +12,6 @@ const items = [
   { type: 'image', src: '/media/gallery/dark-gym-floor.jpg', span: '' },
   { type: 'image', src: '/media/gallery/spotter-bench.jpg', span: 'sm:col-span-2' },
   { type: 'image', src: '/media/gallery/loading-plates.jpg', span: '' },
-  { type: 'image', src: '/media/gallery/back-extension.jpg', span: '' },
 ] as const
 
 export function Gallery() {

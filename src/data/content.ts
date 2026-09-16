@@ -6,7 +6,7 @@ export const brand = {
   tagline: 'Train Like a Texan. Transform Like a Champion.',
   phone: '(512) 555-0142',
   email: 'hello@gymbobstexas.com',
-  address: '1204 Lone Star Blvd, Austin, TX 78701',
+  address: '2428 Main St, Vernon, TX 76384',
   hours: [
     { days: 'Mon – Fri', time: '5:00 AM – 11:00 PM' },
     { days: 'Saturday', time: '7:00 AM – 8:00 PM' },
@@ -34,15 +34,15 @@ export const navLinks = [
 
 export const stats = [
   { value: 8500, suffix: '+', label: 'Members Trained' },
-  { value: 12, suffix: '', label: 'Years Open' },
-  { value: 3, suffix: '', label: 'Texas Locations' },
+  { value: new Date().getFullYear() - 1996, suffix: '', label: 'Years Open' },
+  { value: 1, suffix: '', label: 'Texas Location' },
   { value: 96, suffix: '%', label: 'Member Retention' },
 ]
 
 export const about = {
   eyebrow: 'Why Gym Bob’s',
   heading: 'Built By Texans, For Anyone Chasing A Stronger Life',
-  body: "Gym Bob's started in a single Austin warehouse with a squat rack and a promise: no fluff, just results. Today we run a hybrid model that meets you wherever you train — walk into one of our floors for hands-on coaching, or log in from anywhere in the world for the same programming, accountability, and intensity. Whichever way you show up, the standard doesn't change.",
+  body: "Gym Bob's has been training Vernon since 1996 — decades before \"hybrid\" was a buzzword. What started as a single squat rack and a promise (no fluff, just results) has grown into a full hybrid model that meets you wherever you train: walk onto our floor for hands-on coaching, or log in from anywhere in the world for the same programming, accountability, and intensity. Whichever way you show up, the standard doesn't change.",
   points: [
     'In-person + online hybrid membership, one account',
     'Certified strength & conditioning coaches on every floor',
@@ -218,7 +218,7 @@ export const pricingTiers: PricingTier[] = [
     name: 'All-Access',
     price: 149,
     billing: 'mo',
-    description: 'Every location, every service.',
+    description: 'Every service, fully unlocked.',
     features: [
       'Everything in Premium',
       'Online coaching included',

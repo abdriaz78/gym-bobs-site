@@ -4,53 +4,41 @@ import { onlineCoaching } from '../../data/content'
 export function OnlineCoaching() {
   return (
     <section id="online-coaching" className="bg-charcoal/95 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-2 lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92, rotate: -1 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden rounded-3xl border border-bone/10 bg-ink"
-        >
-          <video
-            className="aspect-video w-full object-cover"
-            src="/media/mascot-blue.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          />
-        </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto max-w-3xl px-6 text-center"
+      >
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brass">
+          {onlineCoaching.eyebrow}
+        </p>
+        <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-5xl">
+          {onlineCoaching.heading}
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-bone/75">
+          {onlineCoaching.body}
+        </p>
+      </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brass">
-            {onlineCoaching.eyebrow}
-          </p>
-          <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-bone sm:text-5xl">
-            {onlineCoaching.heading}
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-bone/75">{onlineCoaching.body}</p>
-
-          <ol className="mt-8 space-y-5">
-            {onlineCoaching.steps.map((step, i) => (
-              <li key={step.title} className="flex gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brass/15 text-sm font-bold text-brass">
-                  {i + 1}
-                </span>
-                <div>
-                  <p className="font-semibold tracking-tight text-bone">{step.title}</p>
-                  <p className="text-sm text-bone/65">{step.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </motion.div>
+      <div className="mx-auto mt-14 grid max-w-5xl gap-8 px-6 sm:grid-cols-2 lg:grid-cols-4">
+        {onlineCoaching.steps.map((step, i) => (
+          <motion.div
+            key={step.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center"
+          >
+            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-brass/15 text-sm font-bold text-brass">
+              {i + 1}
+            </span>
+            <p className="mt-3 font-semibold tracking-tight text-bone">{step.title}</p>
+            <p className="mt-1 text-sm text-bone/65">{step.description}</p>
+          </motion.div>
+        ))}
       </div>
     </section>
   )
