@@ -144,8 +144,9 @@ export const trainers: Trainer[] = [
     photo: '/media/trainers/priya-nair.jpg',
   },
 ]
-// Trainer photos are curated open-source (Unsplash, free-to-use) stand-ins —
-// swap in real staff photos in public/media/trainers/ whenever ready.
+// Photos are real Gym Bob's gym-floor shots, reused across trainers since the
+// names/bios above are still placeholders — swap in real staff headshots
+// (and update the names/bios to match) in public/media/trainers/ whenever ready.
 
 export type Testimonial = {
   name: string
@@ -175,8 +176,9 @@ export const testimonials: Testimonial[] = [
     photo: '/media/testimonials/james-o.jpg',
   },
 ]
-// Member photos are curated open-source (Unsplash, free-to-use) stand-ins —
-// swap in real member photos in public/media/testimonials/ whenever ready.
+// Photos are real Gym Bob's gym-floor shots, reused across testimonials since
+// the names/quotes above are still placeholders — swap in real member photos
+// (and update the names/quotes to match) in public/media/testimonials/ whenever ready.
 
 export type PricingTier = {
   id: string
