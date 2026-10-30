@@ -35,8 +35,10 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
 
       <div className="mt-5 space-y-3">
         {pricingTiers.map((tier) => {
+          const isHourly = tier.billing === 'hr'
           const price =
-            billingCycle === 'annual' ? Math.round(tier.price * 12 * 0.85) : tier.price
+            !isHourly && billingCycle === 'annual' ? Math.round(tier.price * 12 * 0.85) : tier.price
+          const suffix = isHourly ? 'hr' : billingCycle === 'annual' ? 'yr' : 'mo'
           const isSelected = tier.id === selectedId
           return (
             <button
@@ -54,9 +56,7 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
               </div>
               <p className="font-extrabold tracking-tight text-bone">
                 ${price}
-                <span className="text-xs font-normal text-bone/50">
-                  /{billingCycle === 'annual' ? 'yr' : 'mo'}
-                </span>
+                <span className="text-xs font-normal text-bone/50">/{suffix}</span>
               </p>
             </button>
           )

@@ -180,9 +180,10 @@ export const testimonials: Testimonial[] = [
 
 export type PricingTier = {
   id: string
+  category: string
   name: string
   price: number
-  billing: 'mo'
+  billing: 'mo' | 'hr'
   description: string
   features: string[]
   featured?: boolean
@@ -190,46 +191,109 @@ export type PricingTier = {
 
 export const pricingTiers: PricingTier[] = [
   {
-    id: 'basic',
-    name: 'Basic',
-    price: 39,
+    id: 'standard-individual',
+    category: 'Standard Membership',
+    name: 'Standard Membership — Individual',
+    price: 45,
     billing: 'mo',
-    description: 'Gym floor access, no frills.',
+    description: 'Full gym floor access, one member.',
     features: ['Full gym floor access', 'Locker room access', 'Free fitness assessment'],
-  },
-  {
-    id: 'premium',
-    name: 'Premium',
-    price: 89,
-    billing: 'mo',
-    description: 'The full in-gym experience.',
-    features: [
-      'Everything in Basic',
-      'Unlimited group classes',
-      '2 personal training sessions / mo',
-      'Recovery bay access',
-    ],
     featured: true,
   },
   {
-    id: 'online-only',
-    name: 'Online-Only',
-    price: 59,
+    id: 'standard-family',
+    category: 'Standard Membership',
+    name: 'Standard Membership — Family',
+    price: 65,
     billing: 'mo',
-    description: 'Train anywhere, fully coached.',
-    features: ['Custom programming app', 'Weekly coach check-ins', 'Live virtual classes'],
+    description: 'Full gym floor access for the whole household.',
+    features: [
+      'Full gym floor access for up to 4 family members',
+      'Locker room access',
+      'Free fitness assessment',
+    ],
   },
   {
-    id: 'all-access',
-    name: 'All-Access',
-    price: 149,
+    id: 'student-individual',
+    category: 'Students',
+    name: 'Student — Individual',
+    price: 35,
     billing: 'mo',
-    description: 'Every service, fully unlocked.',
+    description: 'Full gym floor access with a valid student ID.',
+    features: ['Full gym floor access', 'Valid student ID required', 'Free fitness assessment'],
+  },
+  {
+    id: 'student-family',
+    category: 'Students',
+    name: 'Student — Family',
+    price: 55,
+    billing: 'mo',
+    description: 'Full gym floor access for the household with a valid student ID.',
     features: [
-      'Everything in Premium',
-      'Online coaching included',
-      'Nutrition coaching included',
-      'Priority booking',
+      'Full gym floor access for up to 4 family members',
+      'Valid student ID required',
+      'Free fitness assessment',
+    ],
+  },
+  {
+    id: 'senior-individual',
+    category: 'Seniors',
+    name: 'Senior — Individual',
+    price: 35,
+    billing: 'mo',
+    description: 'Full gym floor access for members 65+.',
+    features: ['Full gym floor access', 'Ages 65+', 'Free fitness assessment'],
+  },
+  {
+    id: 'senior-family',
+    category: 'Seniors',
+    name: 'Senior — Family',
+    price: 55,
+    billing: 'mo',
+    description: 'Full gym floor access for the household, members 65+.',
+    features: [
+      'Full gym floor access for up to 4 family members',
+      'Ages 65+',
+      'Free fitness assessment',
+    ],
+  },
+  {
+    id: 'state-individual',
+    category: 'State Membership',
+    name: 'State Membership — Individual',
+    price: 35,
+    billing: 'mo',
+    description: 'Full gym floor access for Texas state employees.',
+    features: [
+      'Full gym floor access',
+      'Valid state employee ID required',
+      'Free fitness assessment',
+    ],
+  },
+  {
+    id: 'state-family',
+    category: 'State Membership',
+    name: 'State Membership — Family',
+    price: 55,
+    billing: 'mo',
+    description: 'Full gym floor access for the household, state employees.',
+    features: [
+      'Full gym floor access for up to 4 family members',
+      'Valid state employee ID required',
+      'Free fitness assessment',
+    ],
+  },
+  {
+    id: 'personal-training',
+    category: 'Personal Training',
+    name: 'Personal Training — Basic',
+    price: 40,
+    billing: 'hr',
+    description: 'Pay-per-session 1-on-1 coaching with a certified trainer.',
+    features: [
+      'Certified 1-on-1 trainer',
+      'Flexible scheduling',
+      'Personalized program & form checks',
     ],
   },
 ]
