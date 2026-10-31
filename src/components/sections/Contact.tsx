@@ -20,6 +20,7 @@ export function Contact() {
     setError(false)
     const ok = await submitFormspree({
       _subject: "New message from Gym Bob's website contact form",
+      _replyto: email,
       name,
       email,
       message,

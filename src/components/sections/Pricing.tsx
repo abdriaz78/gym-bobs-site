@@ -28,6 +28,7 @@ export function Pricing({ onSelectPlan }: Props) {
     setCustomError(false)
     const ok = await submitFormspree({
       _subject: "New custom plan request from Gym Bob's website",
+      _replyto: customEmail,
       name: customName,
       email: customEmail,
       plan: customPlan,
