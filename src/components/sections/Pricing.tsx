@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { pricingTiers } from '../../data/content'
+import { submitFormspree } from '../../lib/forms'
 import { Card } from '../ui/Card'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Button } from '../ui/Button'
@@ -18,13 +19,25 @@ export function Pricing({ onSelectPlan }: Props) {
   const [customEmail, setCustomEmail] = useState('')
   const [customPlan, setCustomPlan] = useState('')
   const [customSent, setCustomSent] = useState(false)
+  const [customSubmitting, setCustomSubmitting] = useState(false)
+  const [customError, setCustomError] = useState(false)
 
-  function handleCustomSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleCustomSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    // Mock submission — no backend wired up yet.
-    // TODO: point this at a real form endpoint (e.g. Formspree, a serverless
-    // function, or your CRM) when ready.
-    setCustomSent(true)
+    setCustomSubmitting(true)
+    setCustomError(false)
+    const ok = await submitFormspree({
+      _subject: "New custom plan request from Gym Bob's website",
+      name: customName,
+      email: customEmail,
+      plan: customPlan,
+    })
+    setCustomSubmitting(false)
+    if (ok) {
+      setCustomSent(true)
+    } else {
+      setCustomError(true)
+    }
   }
 
   return (
@@ -169,8 +182,13 @@ export function Pricing({ onSelectPlan }: Props) {
                   onChange={(e) => setCustomPlan(e.target.value)}
                   className="w-full flex-1 resize-none rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                 />
-                <Button type="submit" className="w-full">
-                  Request Custom Plan
+                {customError && (
+                  <p className="text-sm text-red-400">
+                    Something went wrong sending your request — please try again or call us directly.
+                  </p>
+                )}
+                <Button type="submit" className="w-full" disabled={customSubmitting}>
+                  {customSubmitting ? 'Sending…' : 'Request Custom Plan'}
                 </Button>
               </form>
             )}

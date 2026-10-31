@@ -1,19 +1,35 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { brand } from '../../data/content'
+import { submitFormspree } from '../../lib/forms'
 import { Button } from '../ui/Button'
 import { SectionHeading } from '../ui/SectionHeading'
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from '../ui/SocialIcons'
 
 export function Contact() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    // Mock submission — no backend wired up yet.
-    // TODO: point this at a real form endpoint (e.g. Formspree, a serverless
-    // function, or your CRM) when ready.
-    setSent(true)
+    setSubmitting(true)
+    setError(false)
+    const ok = await submitFormspree({
+      _subject: "New message from Gym Bob's website contact form",
+      name,
+      email,
+      message,
+    })
+    setSubmitting(false)
+    if (ok) {
+      setSent(true)
+    } else {
+      setError(true)
+    }
   }
 
   return (
@@ -85,6 +101,8 @@ export function Contact() {
                   <input
                     required
                     type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
@@ -95,6 +113,8 @@ export function Contact() {
                   <input
                     required
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
@@ -105,11 +125,18 @@ export function Contact() {
                   <textarea
                     required
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     className="w-full resize-none rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-brass"
                   />
                 </div>
-                <Button type="submit" className="w-full">
-                  Send Message
+                {error && (
+                  <p className="text-sm text-red-400">
+                    Something went wrong sending your message — please try again or call us directly.
+                  </p>
+                )}
+                <Button type="submit" className="w-full" disabled={submitting}>
+                  {submitting ? 'Sending…' : 'Send Message'}
                 </Button>
               </form>
             )}
