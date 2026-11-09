@@ -15,9 +15,11 @@ import { Testimonials } from './components/sections/Testimonials'
 import { Trainers } from './components/sections/Trainers'
 import { MascotBreak } from './components/MascotBreak'
 import { pricingTiers } from './data/content'
+import { readCheckoutReturn } from './lib/stripe'
 
 function App() {
-  const [joinOpen, setJoinOpen] = useState(false)
+  const [checkoutReturn] = useState(readCheckoutReturn)
+  const [joinOpen, setJoinOpen] = useState(checkoutReturn !== null)
   const [selectedPlanId, setSelectedPlanId] = useState(pricingTiers[0].id)
 
   function openJoin(planId?: string) {
@@ -55,6 +57,7 @@ function App() {
       <JoinModal
         isOpen={joinOpen}
         initialPlanId={selectedPlanId}
+        checkoutReturn={checkoutReturn}
         onClose={() => setJoinOpen(false)}
       />
     </div>

@@ -3,42 +3,18 @@ import { Button } from '../ui/Button'
 
 type Props = {
   selectedId: string
-  billingCycle: 'monthly' | 'annual'
   onSelect: (id: string) => void
-  onBillingChange: (cycle: 'monthly' | 'annual') => void
   onNext: () => void
 }
 
-export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, onNext }: Props) {
+export function PlanStep({ selectedId, onSelect, onNext }: Props) {
   return (
     <div>
       <h3 className="text-2xl font-extrabold tracking-tight text-bone">Choose Your Plan</h3>
 
-      <div className="mt-4 inline-flex rounded-full border border-bone/15 bg-ink p-1 text-sm font-semibold">
-        <button
-          onClick={() => onBillingChange('monthly')}
-          className={`rounded-full px-4 py-2 transition-colors ${
-            billingCycle === 'monthly' ? 'bg-brass text-ink' : 'text-bone/60'
-          }`}
-        >
-          Monthly
-        </button>
-        <button
-          onClick={() => onBillingChange('annual')}
-          className={`rounded-full px-4 py-2 transition-colors ${
-            billingCycle === 'annual' ? 'bg-brass text-ink' : 'text-bone/60'
-          }`}
-        >
-          Annual (save 15%)
-        </button>
-      </div>
-
       <div className="mt-5 space-y-3">
         {pricingTiers.map((tier) => {
-          const isHourly = tier.billing === 'hr'
-          const price =
-            !isHourly && billingCycle === 'annual' ? Math.round(tier.price * 12 * 0.85) : tier.price
-          const suffix = isHourly ? 'hr' : billingCycle === 'annual' ? 'yr' : 'mo'
+          const suffix = tier.billing === 'hr' ? 'session' : 'mo'
           const isSelected = tier.id === selectedId
           return (
             <button
@@ -55,7 +31,7 @@ export function PlanStep({ selectedId, billingCycle, onSelect, onBillingChange, 
                 <p className="text-xs text-bone/60">{tier.description}</p>
               </div>
               <p className="font-extrabold tracking-tight text-bone">
-                ${price}
+                ${tier.price}
                 <span className="text-xs font-normal text-bone/50">/{suffix}</span>
               </p>
             </button>

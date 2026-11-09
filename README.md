@@ -39,25 +39,25 @@ Two things flagged as placeholders in `content.ts`:
 - **Before/after photos** — testimonials are text-only right now; add image
   slots in `Testimonials.tsx` when you have real transformation photos.
 
-## Membership sign-up flow (currently a mock)
+## Membership sign-up flow (Stripe Checkout)
 
 Clicking any "Join Now" button opens `src/components/join/JoinModal.tsx`, a
-4-step flow (Plan → Info → Payment → Confirmation). The Payment step is
-styled like a real checkout but does **not** talk to Stripe — it calls a
-mock function in `src/lib/stripe.ts` that simulates a delay and always
-succeeds. No card data is read, validated, or sent anywhere.
+4-step flow (Plan → Info → Payment → Confirmation). "Pay & Join" calls
+`api/create-checkout-session.ts`, which creates a Stripe Checkout Session and
+sends the customer to Stripe's hosted page to enter their card. Card data never
+touches this site.
 
-**To go live with real Stripe payments:**
+- Memberships are monthly subscriptions; personal training is a one-time charge.
+- Prices are read on the server from `src/data/content.ts` — the browser only
+  sends a plan ID.
+- After paying, Stripe redirects to `/?checkout=success&session_id=...` and
+  `api/checkout-session.ts` confirms the payment before the welcome screen shows.
+  `/?checkout=cancelled` shows a "Payment cancelled" note.
 
-1. Create a Stripe account and set up Products/Prices for each membership
-   tier (one-time price for day passes, recurring price for memberships).
-2. Add a small serverless function (e.g. a Vercel or Netlify function) that
-   uses your Stripe **secret** key to create a real Checkout Session server-side.
-3. Replace the body of `createCheckoutSession()` in `src/lib/stripe.ts` with
-   a call to that endpoint, then redirect to the returned session URL (or
-   use `@stripe/stripe-js`'s `redirectToCheckout`).
-4. Never put your Stripe secret key in frontend code — only the publishable
-   key belongs here.
+**Setup:** set `STRIPE_SECRET_KEY` in Vercel → Settings → Environment Variables
+(`sk_test_...` for testing, `sk_live_...` for real payments) and redeploy. Never
+give it a `VITE_` prefix. Test locally with `npx vercel dev` — plain
+`npm run dev` doesn't run the `api/` functions.
 
 ## Contact form (currently client-only)
 

@@ -2,7 +2,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { pricingTiers } from '../../data/content'
-import { createCheckoutSession } from '../../lib/stripe'
+import {
+  fetchCheckoutStatus,
+  redirectToCheckout,
+  saveCheckoutDraft,
+  takeCheckoutDraft,
+  type CheckoutReturn,
+  type CheckoutStatus,
+} from '../../lib/stripe'
 import { ConfirmStep } from './ConfirmStep'
 import { InfoStep, type CustomerInfo } from './InfoStep'
 import { PaymentStep } from './PaymentStep'
@@ -13,18 +20,32 @@ type Step = 'plan' | 'info' | 'payment' | 'confirm'
 type Props = {
   isOpen: boolean
   initialPlanId: string
+  // Set when the page loaded from a Stripe Checkout redirect.
+  checkoutReturn: CheckoutReturn | null
   onClose: () => void
 }
 
 const EMPTY_INFO: CustomerInfo = { name: '', email: '', phone: '' }
 
-export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
-  const [step, setStep] = useState<Step>('plan')
-  const [planId, setPlanId] = useState(initialPlanId)
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
-  const [info, setInfo] = useState<CustomerInfo>(EMPTY_INFO)
+export function JoinModal({ isOpen, initialPlanId, checkoutReturn, onClose }: Props) {
+  // Coming back from a cancelled checkout drops them on the payment step with
+  // their earlier choices restored; a successful one goes to confirmation.
+  const [draft] = useState(() => (checkoutReturn?.status === 'cancelled' ? takeCheckoutDraft() : null))
+  const [step, setStep] = useState<Step>(
+    checkoutReturn?.status === 'success' ? 'confirm' : draft ? 'payment' : 'plan',
+  )
+  const [planId, setPlanId] = useState(draft?.planId ?? initialPlanId)
+  const [info, setInfo] = useState<CustomerInfo>(draft?.customer ?? EMPTY_INFO)
   const [submitting, setSubmitting] = useState(false)
-  const [confirmationId, setConfirmationId] = useState('')
+  const [paymentError, setPaymentError] = useState('')
+  const [showCancelled, setShowCancelled] = useState(checkoutReturn?.status === 'cancelled')
+  const [checkoutStatus, setCheckoutStatus] = useState<CheckoutStatus | null | undefined>(undefined)
+
+  useEffect(() => {
+    if (checkoutReturn?.status !== 'success') return
+    takeCheckoutDraft()
+    fetchCheckoutStatus(checkoutReturn.sessionId).then(setCheckoutStatus)
+  }, [checkoutReturn])
 
   // Re-seed the flow whenever the modal transitions from closed to open,
   // following React's "adjust state during render" pattern instead of an
@@ -47,22 +68,26 @@ export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
 
   const selectedTier = pricingTiers.find((t) => t.id === planId) ?? pricingTiers[0]
 
+  const priceLabel = `$${selectedTier.price}/${selectedTier.billing === 'hr' ? 'session' : 'mo'}`
+
   async function handlePaymentSubmit() {
     setSubmitting(true)
-    const result = await createCheckoutSession({
-      planId: selectedTier.id,
-      planName: selectedTier.name,
-      priceUsd: selectedTier.price,
-      billingCycle,
-      customer: info,
-    })
-    setSubmitting(false)
-    setConfirmationId(result.confirmationId)
-    setStep('confirm')
+    setPaymentError('')
+    setShowCancelled(false)
+    const input = { planId: selectedTier.id, customer: info }
+    saveCheckoutDraft(input)
+    // On success the browser navigates to Stripe and this never resolves to
+    // anything meaningful; we only get here with an error message.
+    const error = await redirectToCheckout(input)
+    if (error) {
+      setPaymentError(error)
+      setSubmitting(false)
+    }
   }
 
   function handleClose() {
     onClose()
+    setShowCancelled(false)
     // Reset shortly after close animation finishes.
     setTimeout(() => {
       setInfo(EMPTY_INFO)
@@ -111,12 +136,19 @@ export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
               ))}
             </div>
 
+            {showCancelled && step !== 'confirm' && (
+              <p
+                role="status"
+                className="mb-5 rounded-lg border border-bone/15 bg-ink px-4 py-3 text-sm text-bone/70"
+              >
+                Payment cancelled — you weren't charged. You can try again whenever you're ready.
+              </p>
+            )}
+
             {step === 'plan' && (
               <PlanStep
                 selectedId={planId}
-                billingCycle={billingCycle}
                 onSelect={setPlanId}
-                onBillingChange={setBillingCycle}
                 onNext={() => setStep('info')}
               />
             )}
@@ -130,6 +162,9 @@ export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
             )}
             {step === 'payment' && (
               <PaymentStep
+                planName={selectedTier.name}
+                priceLabel={priceLabel}
+                error={paymentError}
                 onBack={() => setStep('info')}
                 onSubmit={handlePaymentSubmit}
                 submitting={submitting}
@@ -137,8 +172,7 @@ export function JoinModal({ isOpen, initialPlanId, onClose }: Props) {
             )}
             {step === 'confirm' && (
               <ConfirmStep
-                confirmationId={confirmationId}
-                planName={selectedTier.name}
+                status={checkoutStatus}
                 onClose={handleClose}
               />
             )}

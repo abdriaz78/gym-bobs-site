@@ -304,7 +304,7 @@ export const faqs = [
   {
     question: 'Do I have to sign a long-term contract?',
     answer:
-      'No. All memberships are month-to-month. Cancel anytime from your account with 30 days’ notice.',
+      'No. All memberships are month-to-month. Cancel anytime with 30 days’ notice — just let the front desk know.',
   },
   {
     question: 'Can I switch between in-gym and online plans?',
@@ -324,6 +324,6 @@ export const faqs = [
   {
     question: 'What’s your cancellation policy?',
     answer:
-      'Cancel anytime with 30 days’ notice, no cancellation fee. Refunds for unused prepaid annual plans are prorated.',
+      'Cancel anytime with 30 days’ notice, no cancellation fee.',
   },
 ]
