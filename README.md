@@ -55,7 +55,7 @@ touches this site.
   `/?checkout=cancelled` shows a "Payment cancelled" note.
 
 **Setup:** set `STRIPE_SECRET_KEY` in Vercel → Settings → Environment Variables
-(`sk_test_...` for testing, `sk_live_...` for real payments) and redeploy. Never
+(`sk_test_`/`rk_test_` for testing, `sk_live_`/`rk_live_` for real payments) and redeploy. Never
 give it a `VITE_` prefix. Test locally with `npx vercel dev` — plain
 `npm run dev` doesn't run the `api/` functions.
 

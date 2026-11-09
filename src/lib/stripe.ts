@@ -2,8 +2,9 @@
 // functions under api/ — this just calls them.
 //
 // Setup (one-time):
-// 1. In the Stripe Dashboard → Developers → API keys, copy the SECRET key
-//    (sk_test_... for testing, sk_live_... for real payments).
+// 1. In the Stripe Dashboard → Developers → API keys, copy a secret key
+//    (sk_test_/sk_live_) or a restricted key (rk_test_/rk_live_) with
+//    Checkout Sessions write access.
 // 2. Set STRIPE_SECRET_KEY in Vercel's project environment variables. It is
 //    server-only — never prefix it with VITE_ or it would ship to browsers.
 // 3. Payouts go to the bank account set in Stripe Dashboard → Settings →

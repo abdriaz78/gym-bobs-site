@@ -4,25 +4,35 @@
 // hosted URL; the browser then redirects there to pay. Card details are
 // entered on Stripe's page and never touch this site.
 //
-// Memberships become recurring monthly subscriptions; personal
-// training is a one-time charge for a single session. The amount is looked up
-// here from src/data/content.ts — the client only sends a plan ID, so it
-// can't tamper with the price.
+// Memberships become recurring monthly subscriptions that renew until the
+// customer cancels (no cancel_at / trial is set); personal training is a
+// one-time charge for a single session. The amount is looked up here from
+// src/data/content.ts — the client only sends a plan ID, so it can't tamper
+// with the price.
+//
+// Stripe APIs used: Checkout Sessions (create). Nothing here moves money out
+// of the account, so a restricted key without payout/transfer access works.
 
-import Stripe from 'stripe'
 import { pricingTiers } from '../src/data/content.js'
+import { getStripe, logStripeError, returnOrigin } from './_stripe.js'
 
 type Body = {
-  planId?: string
-  customer?: { name?: string; email?: string; phone?: string }
+  planId?: unknown
+  customer?: { name?: unknown; email?: unknown; phone?: unknown }
+}
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+// Trims and caps free-text fields; Stripe metadata values max out at 500 chars.
+function clean(value: unknown, max: number): string {
+  return typeof value === 'string' ? value.trim().slice(0, max) : ''
 }
 
 export async function POST(request: Request): Promise<Response> {
-  const secretKey = process.env.STRIPE_SECRET_KEY
-  if (!secretKey) {
+  const stripe = getStripe()
+  if (!stripe) {
     return Response.json({ error: 'Payments are not configured yet.' }, { status: 500 })
   }
-  const stripe = new Stripe(secretKey)
 
   let body: Body
   try {
@@ -31,38 +41,37 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: 'Invalid request.' }, { status: 400 })
   }
 
-  const tier = pricingTiers.find((t) => t.id === body.planId)
+  const tier = pricingTiers.find((t) => t.id === body?.planId)
   if (!tier) {
     return Response.json({ error: 'Unknown plan.' }, { status: 400 })
   }
-  const isSession = tier.billing === 'hr'
-  const amountCents = tier.price * 100
 
-  // Build the return URL from the forwarded host so it matches whichever
-  // deployment the customer is on (production, preview or localhost).
-  const fallback = new URL(request.url)
-  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? fallback.host
-  const proto =
-    request.headers.get('x-forwarded-proto') ?? (host.startsWith('localhost') ? 'http' : fallback.protocol.replace(':', ''))
-  const origin = `${proto}://${host}`
-  const customer = body.customer ?? {}
+  const name = clean(body.customer?.name, 100)
+  const email = clean(body.customer?.email, 254)
+  const phone = clean(body.customer?.phone, 40)
+  if (!EMAIL_PATTERN.test(email)) {
+    return Response.json({ error: 'Please enter a valid email address.' }, { status: 400 })
+  }
+
+  const isSession = tier.billing === 'hr'
+  const origin = returnOrigin(request)
   const metadata = {
     planId: tier.id,
     planName: tier.name,
-    customerName: customer.name ?? '',
-    customerPhone: customer.phone ?? '',
+    customerName: name,
+    customerPhone: phone,
   }
 
   try {
     const session = await stripe.checkout.sessions.create({
       mode: isSession ? 'payment' : 'subscription',
-      customer_email: customer.email || undefined,
+      customer_email: email,
       line_items: [
         {
           quantity: 1,
           price_data: {
             currency: 'usd',
-            unit_amount: amountCents,
+            unit_amount: Math.round(tier.price * 100),
             product_data: { name: tier.name, description: tier.description },
             ...(isSession ? {} : { recurring: { interval: 'month' } }),
           },
@@ -74,9 +83,10 @@ export async function POST(request: Request): Promise<Response> {
       cancel_url: `${origin}/?checkout=cancelled`,
     })
 
+    if (!session.url) throw new Error('Checkout Session has no URL')
     return Response.json({ url: session.url })
   } catch (err) {
-    console.error('[stripe] failed to create checkout session', err)
+    logStripeError('failed to create checkout session', err)
     return Response.json({ error: 'Could not start checkout. Please try again.' }, { status: 502 })
   }
 }
