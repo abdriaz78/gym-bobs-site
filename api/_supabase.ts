@@ -20,8 +20,32 @@ export function getSupabase(): SupabaseClient | null {
     return null
   }
 
-  cached = createClient(url, key, {
+  const baseUrl = normalizeUrl(url)
+  if (!baseUrl) {
+    console.error('[supabase] SUPABASE_URL is not a valid URL')
+    return null
+  }
+  console.info(`[supabase] using ${new URL(baseUrl).host}`)
+
+  cached = createClient(baseUrl, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   })
   return cached
+}
+
+// The client wants just the project origin (https://<ref>.supabase.co). Also
+// accepts common copy-paste variants: a trailing /rest/v1/, or a dashboard
+// link like https://supabase.com/dashboard/project/<ref>/...
+function normalizeUrl(raw: string): string | null {
+  let parsed: URL
+  try {
+    parsed = new URL(raw.replace(/^["']|["']$/g, ''))
+  } catch {
+    return null
+  }
+  const dashboard = /^\/dashboard\/project\/([a-z0-9]+)/.exec(parsed.pathname)
+  if (parsed.hostname.endsWith('supabase.com') && dashboard) {
+    return `https://${dashboard[1]}.supabase.co`
+  }
+  return parsed.origin
 }
