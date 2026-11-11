@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { pricingTiers } from '../../data/content'
-import { submitFormspree } from '../../lib/forms'
+import { submitForm } from '../../lib/forms'
 import { Card } from '../ui/Card'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Button } from '../ui/Button'
@@ -26,9 +26,8 @@ export function Pricing({ onSelectPlan }: Props) {
     e.preventDefault()
     setCustomSubmitting(true)
     setCustomError(false)
-    const ok = await submitFormspree({
-      _subject: "New custom plan request from Gym Bob's website",
-      _replyto: customEmail,
+    const ok = await submitForm({
+      form: 'plan',
       name: customName,
       email: customEmail,
       plan: customPlan,

@@ -59,12 +59,32 @@ touches this site.
 give it a `VITE_` prefix. Test locally with `npx vercel dev` — plain
 `npm run dev` doesn't run the `api/` functions.
 
-## Contact form (currently client-only)
+## Database (Supabase)
 
-The contact form in `src/components/sections/Contact.tsx` shows a "Message
-Sent" confirmation on submit but doesn't send anywhere yet. Wire it to a
-real endpoint (Formspree, a serverless function, your CRM, etc.) when ready
-— the `// TODO` in that file marks the spot.
+Form submissions and paying members are saved in a free Supabase Postgres
+database. Tables (see `supabase/schema.sql`):
+
+- `contact_messages` — Contact form (also emailed via Formspree)
+- `plan_requests` — Custom Plan form (also emailed via Formspree)
+- `members` — every completed Stripe Checkout, filled by `api/stripe-webhook.ts`;
+  subscription status (active / past_due / canceled) is kept in sync by Stripe.
+
+Only the Vercel functions touch the database (`api/_supabase.ts`), using the
+service-role key. Row Level Security is on with no policies, so nothing is
+readable from the browser. Browse the data in Supabase → Table Editor.
+
+**Setup:**
+1. Create a free project at supabase.com.
+2. SQL Editor → paste `supabase/schema.sql` → Run.
+3. Project Settings → API: copy the Project URL and the `service_role` key.
+4. In Vercel → Settings → Environment Variables set `SUPABASE_URL` and
+   `SUPABASE_SERVICE_ROLE_KEY` (never with a `VITE_` prefix).
+5. Stripe Dashboard → Developers → Webhooks → Add endpoint
+   `https://<your-domain>/api/stripe-webhook` with events
+   `checkout.session.completed`, `customer.subscription.updated`,
+   `customer.subscription.deleted`. Copy its signing secret into
+   `STRIPE_WEBHOOK_SECRET` in Vercel.
+6. Redeploy.
 
 ## Accessibility & performance notes
 

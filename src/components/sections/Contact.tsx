@@ -1,7 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { brand } from '../../data/content'
-import { submitFormspree } from '../../lib/forms'
+import { submitForm } from '../../lib/forms'
 import { Button } from '../ui/Button'
 import { SectionHeading } from '../ui/SectionHeading'
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from '../ui/SocialIcons'
@@ -18,13 +18,7 @@ export function Contact() {
     e.preventDefault()
     setSubmitting(true)
     setError(false)
-    const ok = await submitFormspree({
-      _subject: "New message from Gym Bob's website contact form",
-      _replyto: email,
-      name,
-      email,
-      message,
-    })
+    const ok = await submitForm({ form: 'contact', name, email, message })
     setSubmitting(false)
     if (ok) {
       setSent(true)
